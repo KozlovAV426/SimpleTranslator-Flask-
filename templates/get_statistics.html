@@ -1,0 +1,17 @@
+<!doctype html>
+<html>
+   <body>
+         <h1 align="center"> This page contain statistics of translator </h1>
+         <h2> The shortest translatable text is "{{ shortest_request[0]}}". It contains {{ minlength }} symbols. </h2>
+         <h2> Distribution by language </h2>
+         {% for (lang, counter) in statistics.items() %}
+
+         <p> Into {{lang}} people translated {{ counter }} time(s) </p>
+
+         {% endfor %}
+
+         <h2>  Total requests translated - {{ amount }} </h2>
+         
+      <a href = "/">Go back to home page</a>
+   </body>
+</html>
