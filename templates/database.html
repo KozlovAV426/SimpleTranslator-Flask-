@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+   <body>
+      <table border = 1>
+         <thead>
+            <td>text</td>
+            <td>translation</td>
+            <td>lang</td>
+            <td>length</td>
+         </thead>
+         
+         {% for row in rows %}
+            <tr>
+               <td>{{row["text"]}}</td>
+               <td>{{row["translation"]}}</td>
+               <td>{{row["lang"]}}</td>
+               <td> {{ row["length"]}}</td>
+            </tr>
+         {% endfor %}
+      </table>
+      
+      <a href = "/">Go back to home page</a>
+   </body>
+</html>

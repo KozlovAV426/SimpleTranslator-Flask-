@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+	<meta charset="UTF-8">
+	<title>
+		Translator
+	</title>
+
+</head>
+<body>
+	<h2> Translator </h2>
+		<form method="post" action="/translate">
+			<p><b> Select the language you want to translate </b></p>
+			<p><input name="lang" type="radio" value="en"> English </p>
+			<p><input name="lang" type="radio" value="es"> Spanish </p>
+			<p><input name="lang" type="radio" value="ru" checked> Russian </p>
+			<p><b>Type your text:</b></p>
+			{% block wrong %}
+			
+			{% endblock %}
+			<p><textarea type="text" name="text" cols="45"  rows="10"></textarea></p>
+			<p><input type="submit"></p>
+		</form>
+
+		<form>
+			<p><b>Translation:</b></p>
+			<p><textarea cols="45"  rows="10" disabled="True"> {{ content }} </textarea></p>
+		</form>
+	<a href = "/">Go back to home page</a>
+
+	<h2> Last 5 translations to selected language </h2>
+
+	{% for message in messages %}
+	<div> {{ message[0] }}&nbsp; <---------->  <i>{{ message[1] }}</i> </div>
+	{% endfor %}
+</body>
+</html>
