@@ -1,27 +1,25 @@
 import sqlite3
+from contextlib import closing
 
 
 def get_rows_from_database():
-	con = sqlite3.connect("database.db")
-	con.row_factory = sqlite3.Row
-	cur = con.cursor()
-	cur.execute("select * from translations")
-	frows = cur.fetchall()
-	con.close()
+	with closing(sqlite3.connect('database.db')) as con:
+		con.row_factory = sqlite3.Row
+		cur = con.cursor()
+		cur.execute("select * from translations")
+		frows = cur.fetchall()
 	return frows
 
 
 def add_to_database(text, translation, lang, length):
-	con = sqlite3.connect("database.db")
-	cur = con.cursor()
-	cur.execute("INSERT INTO translations ( text, translation, lang, length) VALUES ( ?, ?, ?, ?)",
+	with closing(sqlite3.connect('database.db')) as con:
+		cur = con.cursor()
+		cur.execute("INSERT INTO translations ( text, translation, lang, length) VALUES ( ?, ?, ?, ?)",
              (text, translation, lang, length))
-	con.commit()
-	con.close()
+		con.commit()
 
 
 def create_database():
-	conn = sqlite3.connect('database.db')
-	#conn.execute("DROP TABLE translations")
-	conn.execute('Create TABLE if not exists translations ( text TEXT, translation TEXT, lang TEXT, length INT)')
-	conn.close()
+	with closing(sqlite3.connect('database.db')) as con:
+		#con.execute("DROP TABLE translations")
+	  con.execute('Create TABLE if not exists translations ( text TEXT, translation TEXT, lang TEXT, length INT)')

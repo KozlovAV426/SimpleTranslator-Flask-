@@ -9,11 +9,11 @@
 </head>
 <body>
 	<h2> Translator </h2>
-		<form method="post" action="/translate">
+		<form method="post" action="/translation_query">
 			<p><b> Select the language you want to translate </b></p>
-			<p><input name="lang" type="radio" value="en"> English </p>
+			<p><input name="lang" type="radio" value="en" checked> English </p>
 			<p><input name="lang" type="radio" value="es"> Spanish </p>
-			<p><input name="lang" type="radio" value="ru" checked> Russian </p>
+			<p><input name="lang" type="radio" value="ru" > Russian </p>
 			<p><b>Type your text:</b></p>
 			{% block wrong %}
 			
